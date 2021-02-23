@@ -1,5 +1,4 @@
 package com.preving.springboot.backend.apirest.models.services;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.preving.springboot.backend.apirest.models.dao.IProductoDao;
 import com.preving.springboot.backend.apirest.models.entity.Producto;
-
 
 @Service
 public class ProductoServiceImpl implements IProductoService{

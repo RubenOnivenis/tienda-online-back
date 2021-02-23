@@ -8,21 +8,20 @@ import javax.persistence.*;
 @Entity @Table(name="productos")
 public class Producto implements Serializable{
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_producto;
 	private String nombre;
 	private Integer precio;
 	private String imagen;
 	private String descr;
-	@Column(name = "fecha_elaboracion") @Temporal(TemporalType.DATE) private Date fechaElaboracion;
 	@Column(name = "dias_consumicion") private Integer diasConsumicion;
 	private String ingredientes;
 	private String imagen_oferta;
 	
 	public Long getId() {
-		return id;
+		return id_producto;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long id_producto) {
+		this.id_producto = id_producto;
 	}
 	public String getNombre() {
 		return nombre;
@@ -47,12 +46,6 @@ public class Producto implements Serializable{
 	}
 	public void setDescr(String descr) {
 		this.descr = descr;
-	}
-	public Date getFechaElaboracion() {
-		return fechaElaboracion;
-	}
-	public void setFechaElaboracion(Date fechaElaboracion) {
-		this.fechaElaboracion = fechaElaboracion;
 	}
 	public Integer getDiasConsumicion() {
 		return diasConsumicion;
