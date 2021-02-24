@@ -41,13 +41,13 @@ public class ProuctoRestControllers {
 		return productoService.findByNombre(nombre);
 	}
 	
-	@PostMapping("/productos") @ResponseStatus(HttpStatus.CREATED)
+	@PostMapping("/productos") @ResponseStatus(HttpStatus.CREATED)	//Añadir producto
 	public int create(@RequestBody Producto producto) {
 		
 		return productoService.save(producto);
 	}
 	
-	@PostMapping("/productos") @ResponseStatus(HttpStatus.CREATED)	//Modificar producto
+	@PutMapping("/productos") @ResponseStatus(HttpStatus.CREATED)	//Modificar producto
 	public int update(@RequestBody Producto producto, @PathVariable Long id) {
 		
 		producto.setId(id);

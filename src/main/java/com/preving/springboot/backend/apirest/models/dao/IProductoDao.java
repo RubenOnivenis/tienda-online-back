@@ -11,13 +11,13 @@ public interface IProductoDao{
 	
 	public List<Producto> getProducto();
 	
-	public Producto getProductoById(Long id);
+	public Producto getProductoById(Long id_producto);
 	
-	public List<Producto> getProductoByNombre(String Nombre);
+	public List<Producto> getProductoByNombre(String nombre);
 	
 	public int insert(Producto roducto);
 	
-	public int delete(Long id);
+	public int delete(Long id_producto);
 	
 	public int update(Producto producto);
 }

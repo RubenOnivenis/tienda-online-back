@@ -1,7 +1,6 @@
 package com.preving.springboot.backend.apirest.models.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -35,11 +34,11 @@ public class SpringJdbcProducto extends JdbcDaoSupport implements IProductoDao{
 	}
 	
 	@Override
-	public Producto getProductoById(Long id) {
+	public Producto getProductoById(Long id_producto) {
 		
-		String sql = "SELECT * FROM productos WHERE id = :id;";
+		String sql = "SELECT * FROM productos WHERE id_producto = :id_producto;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("id", id);
+		params.addValue("id_producto", id_producto);
 		
 		return (Producto) getNamedJdbcTemplate().queryForObject(sql, params, new ProductoRowMapper());
 	}
@@ -71,18 +70,18 @@ public class SpringJdbcProducto extends JdbcDaoSupport implements IProductoDao{
 	}
 	
 	@Override
-	public int delete(Long id) {
-		String sql = "DELETE FROM productos WHERE id = :id;";
+	public int delete(Long id_producto) {
+		String sql = "DELETE FROM productos WHERE id_producto = :id_producto;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("id", id);
+		params.addValue("id_producto", id_producto);
 		
 		return getNamedJdbcTemplate().update(sql, params);
 	}
 	@Override
 	public int update(Producto producto) {
-		String sql = "UPDATE productos SET nombre=:nombre, precio=:precio, imagen=:imagen, descr=:descr, diasConsumicion=:diasConsumicion, ingredientes=:ingredientes, imagen_oferta=:imagen_oferta;";
+		String sql = "UPDATE productos SET nombre=:nombre, precio=:precio, imagen=:imagen, descr=:descr, diasConsumicion=:diasConsumicion, ingredientes=:ingredientes, imagen_oferta=:imagen_oferta WHERE id_producto=:id_producto;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("id", producto.getId());
+		params.addValue("id_producto", producto.getId());
 		params.addValue("nombre", producto.getNombre());
 		params.addValue("precio", producto.getPrecio());
 		params.addValue("imagen", producto.getImagen());
@@ -109,7 +108,7 @@ public class SpringJdbcProducto extends JdbcDaoSupport implements IProductoDao{
 				
 				Producto producto = new Producto();
 				
-				producto.setId(rs.getLong("id"));
+				producto.setId(rs.getLong("id_producto"));
 				producto.setNombre(rs.getString("nombre"));
 				producto.setPrecio(rs.getInt("precio"));
 				producto.setImagen(rs.getString("imagen"));
