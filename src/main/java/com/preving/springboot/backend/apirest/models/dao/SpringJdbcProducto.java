@@ -35,7 +35,7 @@ public class SpringJdbcProducto extends JdbcDaoSupport implements IProductoDao{
 	}
 	
 	@Override
-	public Producto getClienteById(Long id) {
+	public Producto getProductoById(Long id) {
 		
 		String sql = "SELECT * FROM productos WHERE id = :id;";
 		MapSqlParameterSource params = new MapSqlParameterSource();

@@ -15,26 +15,44 @@ public class ProductoServiceImpl implements IProductoService{
 
 	@Override
 	public List<Producto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Producto save(Producto producto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		
+		return productoDao.getProducto();
+	}
+
+	@Override
+	public int save(Producto producto) {
+		
+		return productoDao.insert(producto);
+	}
+
+	@Override
+	public int delete(Long id) {
+		
+		return productoDao.delete(id);
 	}
 
 	@Override
 	public Producto findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productoDao.getProductoById(id);
+	}
+
+	@Override
+	public List<Producto> findByNombre(String nombre) {
+		
+		return productoDao.getProductoByNombre(nombre);
+	}
+
+	@Override
+	public int insert(Producto producto) {
+		
+		return productoDao.insert(producto);
+	}
+
+	@Override
+	public int update(Producto producto) {
+		
+		return productoDao.update(producto);
 	}
 	
 }

@@ -8,10 +8,16 @@ public interface IProductoService {
 
 	public List<Producto> findAll();
 	
-	public Producto save(Producto producto);
+	public int save(Producto producto);
 	
-	public void delete(Long id);
+	public int delete(Long id);
 	
 	public Producto findById(Long id);
+	
+	public List<Producto> findByNombre(String nombre);
+	
+	public int insert(Producto producto);
+	
+	public int update(Producto producto);
 	
 }
