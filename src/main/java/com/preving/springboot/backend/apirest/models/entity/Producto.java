@@ -13,7 +13,7 @@ public class Producto implements Serializable{
 	private Integer precio;
 	private String imagen;
 	private String descr;
-	@Column(name = "dias_consumicion") private Integer diasConsumicion;
+	private Integer diasConsumicion;
 	private String ingredientes;
 	private String imagen_oferta;
 	
