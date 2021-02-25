@@ -29,10 +29,10 @@ public class ProuctoRestControllers {
 		return productoService.findAll();
 	}
 	
-	@GetMapping("/producto/{id}")	//Ver un solo producto id
-	public Producto show(@PathVariable Long id) {
+	@GetMapping("/producto/{id_producto}")	//Ver un solo producto id
+	public Producto show(@PathVariable Long id_producto) {
 		
-		return productoService.findById(id);
+		return productoService.findById(id_producto);
 	}
 	
 	@GetMapping("/producto/nombre/{nombre}")	//Ver un producto por nombre (Buscador)
