@@ -42,10 +42,10 @@ public class Usuario implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellido() {
+	public String getApellidos() {
 		return apellidos;
 	}
-	public void setApellido(String apellidos) {
+	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 	public String getCorreo() {

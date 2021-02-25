@@ -55,7 +55,7 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("nombre_usuario", usuario.getNombre_usuario());
 		params.addValue("nombre", usuario.getNombre());
-		params.addValue("apellidos", usuario.getApellido());
+		params.addValue("apellidos", usuario.getApellidos());
 		params.addValue("correo", usuario.getCorreo());
 		params.addValue("pass", usuario.getPass());
 		params.addValue("cod_postal", usuario.getCod_postal());
@@ -129,7 +129,7 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 				usuario.setId_usuario(rs.getLong("id_usuario"));
 				usuario.setNombre_usuario(rs.getString("nombre_usuario"));
 				usuario.setNombre(rs.getString("nombre"));
-				usuario.setApellido(rs.getString("apellidos"));
+				usuario.setApellidos(rs.getString("apellidos"));
 				usuario.setCorreo(rs.getString("correo"));
 				usuario.setPass(rs.getString("pass"));
 				usuario.setCod_postal(rs.getString("cod_postal"));
