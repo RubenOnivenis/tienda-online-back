@@ -12,29 +12,41 @@ import com.preving.springboot.backend.apirest.models.entity.Usuario;
 public class UsuarioServiceImpl implements IUsuarioService {
 
 	@Autowired private IUsuarioDao usuarioDao;
-	
+
 	@Override
 	public List<Usuario> findAll() {
-		// TODO Auto-generated method stub
-		return (List<Usuario>) usuarioDao.findAll();
+		
+		return usuarioDao.getUsuarios();
 	}
 
 	@Override
-	public Usuario save(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return usuarioDao.save(usuario);
+	public int save(Usuario usuario) {
+		
+		return usuarioDao.insert(usuario);
+	}
+
+	@Override
+	public int delete(Long id) {
+		
+		return usuarioDao.delete(id);
 	}
 
 	@Override
 	public Usuario findById(Long id) {
-		// TODO Auto-generated method stub
-		return usuarioDao.findById(id).orElse(null);
+		
+		return usuarioDao.getUsuarioById(id);
+	}
+	
+	public int insert(Usuario usuario) {
+		
+		return usuarioDao.insert(usuario);
 	}
 
 	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		usuarioDao.deleteById(id);
+	public int update(Usuario usuario) {
+		
+		return usuarioDao.update(usuario);
 	}
+	
 	
 }

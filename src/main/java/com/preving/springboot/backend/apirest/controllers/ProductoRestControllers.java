@@ -19,7 +19,7 @@ import com.preving.springboot.backend.apirest.models.entity.Producto;
 import com.preving.springboot.backend.apirest.models.services.IProductoService;
 
 @RestController @RequestMapping("/api") @CrossOrigin(origins = {"http://localhost:4200"})
-public class ProuctoRestControllers {
+public class ProductoRestControllers {
 
 	@Autowired private IProductoService productoService;
 	

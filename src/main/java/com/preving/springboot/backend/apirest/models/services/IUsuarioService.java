@@ -8,10 +8,13 @@ public interface IUsuarioService {
 
 	public List<Usuario> findAll();
 	
-	public Usuario save(Usuario usuario);
+	public int save(Usuario usuario);
 	
-	public void delete(Long id);
+	public int delete(Long id);
 	
 	public Usuario findById(Long id);
 	
+	public int insert(Usuario usuario);
+	
+	public int update(Usuario usuario);
 }

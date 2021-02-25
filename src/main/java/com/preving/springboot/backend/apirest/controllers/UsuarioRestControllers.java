@@ -20,39 +20,29 @@ public class UsuarioRestControllers {
 		return usuarioService.findAll();
 	}
 	
-	@GetMapping("/usuario/{id}")
-	public Usuario show(@PathVariable Long id) {
+	@GetMapping("/usuario/{id_usuario}")
+	public Usuario show(@PathVariable Long id_usuario) {
 		
-		return usuarioService.findById(id);
+		return usuarioService.findById(id_usuario);
+	}
+	
+	@PostMapping("/usuarios") @ResponseStatus(HttpStatus.CREATED)
+	public int create(@RequestBody Usuario usuario) {
+		
+		return usuarioService.save(usuario);
 	}
 	
 	@PostMapping("/usuarios/{id}") @ResponseStatus(HttpStatus.CREATED)
-	public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id) {
+	public int update(@RequestBody Usuario usuario, @PathVariable Long id) {
 		
-		Usuario usuarioActual = usuarioService.findById(id);
-		usuarioActual.setNombre_usuario(usuario.getNombre_usuario());
-		usuarioActual.setNombre(usuario.getNombre());
-		usuarioActual.setApellido(usuario.getApellido());
-		usuarioActual.setCorreo(usuario.getCorreo());
-		usuarioActual.setPass(usuario.getPass());
-		usuarioActual.setCod_postal(usuario.getCod_postal());
-		usuarioActual.setDomicilio(usuario.getDomicilio());
-		usuarioActual.setLocalidad(usuario.getLocalidad());
-		usuarioActual.setProvincia(usuario.getProvincia());
-		usuarioActual.setCod_postal_2(usuario.getCod_postal_2());
-		usuarioActual.setDomicilio_2(usuario.getDomicilio_2());
-		usuarioActual.setLocalidad_2(usuario.getLocalidad_2());
-		usuarioActual.setProvincia_2(usuario.getProvincia_2());
-		usuarioActual.setTarjeta_credito(usuario.getTarjeta_credito());
-		usuarioActual.setTelefono(usuario.getTelefono());
+		usuario.setId_usuario(id);
 		
-		return usuarioService.save(usuarioActual);
+		return usuarioService.update(usuario);
 	}
 	
 	@DeleteMapping("/usuarios/{id}") @ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public int delete(@PathVariable Long id) {
 		
-		usuarioService.delete(id);
-		
+		return usuarioService.delete(id);
 	}
 }

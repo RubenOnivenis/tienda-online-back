@@ -10,7 +10,7 @@ public class Usuario implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_usuario;
 	private String nombre_usuario;
 	private String nombre;
-	private String apellido;
+	private String apellidos;
 	private String correo;
 	private String pass;
 	private String cod_postal;
@@ -43,10 +43,10 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 	public String getApellido() {
-		return apellido;
+		return apellidos;
 	}
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellido(String apellidos) {
+		this.apellidos = apellidos;
 	}
 	public String getCorreo() {
 		return correo;
