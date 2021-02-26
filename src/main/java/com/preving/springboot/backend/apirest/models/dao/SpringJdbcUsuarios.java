@@ -89,24 +89,25 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 		String sql = "UPDATE usuarios SET "
 				+ "nombre_usuario=:nombre_usuario, nombre=:nombre, apellidos=:apellidos, correo=:correo, pass=:pass, cod_postal=:cod_postal, "
 				+ "domicilio=:domicilio, localidad=:localidad, provincia=:provincia, cod_postal_2=:cod_postal_2, domicilio_2=:domicilio_2, "
-				+ "localidad_2=:localidad_2, provincia_2=:provincia_2, tarjeta_credito=:tarjeta_credito, telefono=:telefono"
+				+ "localidad_2=:localidad_2, provincia_2=:provincia_2, tarjeta_credito=:tarjeta_credito, telefono=:telefono "
 				+ "WHERE id_usuario=:id_usuario;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id_usuario", usuario.getId_usuario());
 		params.addValue("nombre_usuario", usuario.getNombre_usuario());
-		params.addValue("nombre", usuario.getNombre_usuario());
-		params.addValue("apellidos", usuario.getNombre_usuario());
-		params.addValue("correo", usuario.getNombre_usuario());
-		params.addValue("pass", usuario.getNombre_usuario());
-		params.addValue("cod_postal", usuario.getNombre_usuario());
-		params.addValue("domicilio", usuario.getNombre_usuario());
-		params.addValue("localidad", usuario.getNombre_usuario());
-		params.addValue("provincia", usuario.getNombre_usuario());
-		params.addValue("cod_postal_2", usuario.getNombre_usuario());
-		params.addValue("domicilio_2", usuario.getNombre_usuario());
-		params.addValue("localidad_2", usuario.getNombre_usuario());
-		params.addValue("provincia_2", usuario.getNombre_usuario());
-		params.addValue("tarjeta_credito", usuario.getNombre_usuario());
-		params.addValue("telefono", usuario.getNombre_usuario());
+		params.addValue("nombre", usuario.getNombre());
+		params.addValue("apellidos", usuario.getApellidos());
+		params.addValue("correo", usuario.getCorreo());
+		params.addValue("pass", usuario.getPass());
+		params.addValue("cod_postal", usuario.getCod_postal());
+		params.addValue("domicilio", usuario.getDomicilio());
+		params.addValue("localidad", usuario.getLocalidad());
+		params.addValue("provincia", usuario.getProvincia());
+		params.addValue("cod_postal_2", usuario.getCod_postal_2());
+		params.addValue("domicilio_2", usuario.getDomicilio_2());
+		params.addValue("localidad_2", usuario.getLocalidad_2());
+		params.addValue("provincia_2", usuario.getProvincia_2());
+		params.addValue("tarjeta_credito", usuario.getTarjeta_credito());
+		params.addValue("telefono", usuario.getTelefono());
 		
 		return getNamedJdbcTemplate().update(sql, params);
 	}

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.preving.springboot.backend.apirest.models.entity.Usuario;
 import com.preving.springboot.backend.apirest.models.services.IUsuarioService;
 
-@RestController @RequestMapping("/api") @CrossOrigin(origins = {"http://localhost:4200"})
+@RestController @RequestMapping("/api") @CrossOrigin
 public class UsuarioRestControllers {
 
 	@Autowired private IUsuarioService usuarioService;
@@ -20,19 +20,19 @@ public class UsuarioRestControllers {
 		return usuarioService.findAll();
 	}
 	
-	@GetMapping("/usuario/{id_usuario}")
+	@GetMapping("/usuario/{id_usuario}")	//Usuarios por id
 	public Usuario show(@PathVariable Long id_usuario) {
 		
 		return usuarioService.findById(id_usuario);
 	}
 	
-	@PostMapping("/usuarios") @ResponseStatus(HttpStatus.CREATED)
+	@PostMapping("/usuarios") @ResponseStatus(HttpStatus.CREATED)	//Crear usuario
 	public int create(@RequestBody Usuario usuario) {
 		
 		return usuarioService.save(usuario);
 	}
 	
-	@PostMapping("/usuarios/{id}") @ResponseStatus(HttpStatus.CREATED)
+	@PutMapping("/usuarios/{id}") @ResponseStatus(HttpStatus.CREATED)	//Modificar usuario
 	public int update(@RequestBody Usuario usuario, @PathVariable Long id) {
 		
 		usuario.setId_usuario(id);
