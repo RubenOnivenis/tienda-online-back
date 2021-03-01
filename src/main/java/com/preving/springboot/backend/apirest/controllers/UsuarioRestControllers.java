@@ -32,7 +32,7 @@ public class UsuarioRestControllers {
 		return usuarioService.save(usuario);
 	}
 	
-	@PutMapping("/usuarios/{id}") @ResponseStatus(HttpStatus.CREATED)	//Modificar usuario
+	@PutMapping("/usuarios/{id}") @ResponseStatus(HttpStatus.CREATED)	//Modificar usuario, menos la contraseña
 	public int update(@RequestBody Usuario usuario, @PathVariable Long id) {
 		
 		usuario.setId_usuario(id);
@@ -44,5 +44,13 @@ public class UsuarioRestControllers {
 	public int delete(@PathVariable Long id) {
 		
 		return usuarioService.delete(id);
+	}
+	
+	@PutMapping("/usuarios/pass/{id}") @ResponseStatus(HttpStatus.CREATED)	//Modificar contraseña del usuario
+	public int updatePass(@RequestBody Usuario usuario, @PathVariable Long id) {
+		
+		usuario.setId_usuario(id);
+		
+		return usuarioService.updatePass(usuario);
 	}
 }

@@ -47,6 +47,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
 		
 		return usuarioDao.update(usuario);
 	}
+
+	@Override
+	public int updatePass(Usuario usuario) {
+		
+		return usuarioDao.updatePass(usuario);
+	}
 	
 	
 }

@@ -87,7 +87,7 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 	public int update(Usuario usuario) {
 		
 		String sql = "UPDATE usuarios SET "
-				+ "nombre_usuario=:nombre_usuario, nombre=:nombre, apellidos=:apellidos, correo=:correo, pass=:pass, cod_postal=:cod_postal, "
+				+ "nombre_usuario=:nombre_usuario, nombre=:nombre, apellidos=:apellidos, correo=:correo, cod_postal=:cod_postal, "
 				+ "domicilio=:domicilio, localidad=:localidad, provincia=:provincia, cod_postal_2=:cod_postal_2, domicilio_2=:domicilio_2, "
 				+ "localidad_2=:localidad_2, provincia_2=:provincia_2, tarjeta_credito=:tarjeta_credito, telefono=:telefono "
 				+ "WHERE id_usuario=:id_usuario;";
@@ -97,7 +97,7 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 		params.addValue("nombre", usuario.getNombre());
 		params.addValue("apellidos", usuario.getApellidos());
 		params.addValue("correo", usuario.getCorreo());
-		params.addValue("pass", usuario.getPass());
+		//params.addValue("pass", usuario.getPass());
 		params.addValue("cod_postal", usuario.getCod_postal());
 		params.addValue("domicilio", usuario.getDomicilio());
 		params.addValue("localidad", usuario.getLocalidad());
@@ -108,6 +108,17 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 		params.addValue("provincia_2", usuario.getProvincia_2());
 		params.addValue("tarjeta_credito", usuario.getTarjeta_credito());
 		params.addValue("telefono", usuario.getTelefono());
+		
+		return getNamedJdbcTemplate().update(sql, params);
+	}
+	
+	@Override
+	public int updatePass(Usuario usuario) {
+		
+		String sql = "UPDATE usuarios SET pass=:pass WHERE id_usuario=:id_usuario;";
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id_usuario", usuario.getId_usuario());
+		params.addValue("pass", usuario.getPass());
 		
 		return getNamedJdbcTemplate().update(sql, params);
 	}

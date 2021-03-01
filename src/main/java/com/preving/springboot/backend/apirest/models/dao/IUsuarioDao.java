@@ -16,4 +16,6 @@ public interface IUsuarioDao {
 	
 	public int update(Usuario usuario);
 	
+	public int updatePass(Usuario usuario);
+	
 }
