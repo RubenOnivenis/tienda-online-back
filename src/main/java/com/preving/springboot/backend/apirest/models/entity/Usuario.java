@@ -4,19 +4,21 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.sun.istack.NotNull;
+
 @Entity @Table(name="usuarios")
 public class Usuario implements Serializable {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_usuario;
-	private String nombre_usuario;
-	private String nombre;
-	private String apellidos;
-	private String correo;
-	private String pass;
-	private String cod_postal;
-	private String domicilio;
-	private String localidad;
-	private String provincia;
+	@NotNull @Column(unique = true) private String nombre_usuario;
+	@NotNull private String nombre;
+	@NotNull private String apellidos;
+	@NotNull @Column(unique = true) private String correo;
+	@NotNull private String pass;
+	@NotNull private String cod_postal;
+	@NotNull private String domicilio;
+	@NotNull private String localidad;
+	@NotNull private String provincia;
 	private String cod_postal_2;
 	private String domicilio_2;
 	private String localidad_2;
@@ -24,6 +26,33 @@ public class Usuario implements Serializable {
 	private String tarjeta_credito;
 	private String telefono;
 	
+	public Usuario() {
+		
+	}
+	
+	public Usuario(String nombre_usuario, String nombre, String apellidos, String correo, String pass,
+			String cod_postal, String domicilio, String localidad, String provincia, String cod_postal_2,
+			String domicilio_2, String localidad_2, String provincia_2, String tarjeta_credito, String telefono) {
+		super();
+		this.nombre_usuario = nombre_usuario;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.correo = correo;
+		this.pass = pass;
+		this.cod_postal = cod_postal;
+		this.domicilio = domicilio;
+		this.localidad = localidad;
+		this.provincia = provincia;
+		this.cod_postal_2 = cod_postal_2;
+		this.domicilio_2 = domicilio_2;
+		this.localidad_2 = localidad_2;
+		this.provincia_2 = provincia_2;
+		this.tarjeta_credito = tarjeta_credito;
+		this.telefono = telefono;
+	}
+
+
+
 	public Long getId_usuario() {
 		return id_usuario;
 	}

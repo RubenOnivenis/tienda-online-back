@@ -52,7 +52,6 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	public int updatePass(Usuario usuario) {
 		
 		return usuarioDao.updatePass(usuario);
-	}
-	
+	}	
 	
 }

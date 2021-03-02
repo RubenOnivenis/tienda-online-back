@@ -19,4 +19,5 @@ public interface IUsuarioService {
 	public int update(Usuario usuario);
 	
 	public int updatePass(Usuario usuario);
+	
 }

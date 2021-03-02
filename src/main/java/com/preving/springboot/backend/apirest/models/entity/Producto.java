@@ -10,7 +10,7 @@ public class Producto implements Serializable{
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_producto;
 	private String nombre;
-	private Integer precio;
+	private Float precio;
 	private String imagen;
 	private String descr;
 	private Integer diasConsumicion;
@@ -29,10 +29,10 @@ public class Producto implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Integer getPrecio() {
+	public Float getPrecio() {
 		return precio;
 	}
-	public void setPrecio(Integer precio) {
+	public void setPrecio(Float precio) {
 		this.precio = precio;
 	}
 	public String getImagen() {

@@ -110,7 +110,7 @@ public class SpringJdbcProducto extends JdbcDaoSupport implements IProductoDao{
 				
 				producto.setId(rs.getLong("id_producto"));
 				producto.setNombre(rs.getString("nombre"));
-				producto.setPrecio(rs.getInt("precio"));
+				producto.setPrecio(rs.getFloat("precio"));
 				producto.setImagen(rs.getString("imagen"));
 				producto.setDescr(rs.getString("descr"));
 				producto.setDiasConsumicion(rs.getInt("diasConsumicion"));

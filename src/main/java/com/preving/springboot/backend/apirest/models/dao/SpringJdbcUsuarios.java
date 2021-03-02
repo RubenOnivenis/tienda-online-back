@@ -97,7 +97,6 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 		params.addValue("nombre", usuario.getNombre());
 		params.addValue("apellidos", usuario.getApellidos());
 		params.addValue("correo", usuario.getCorreo());
-		//params.addValue("pass", usuario.getPass());
 		params.addValue("cod_postal", usuario.getCod_postal());
 		params.addValue("domicilio", usuario.getDomicilio());
 		params.addValue("localidad", usuario.getLocalidad());
