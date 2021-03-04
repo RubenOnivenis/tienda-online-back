@@ -8,7 +8,7 @@ public interface ICestaDao {
 
 	public List<Cesta> getCesta();
 	
-	public Cesta getCestaById(Long id_cesta);
+	public Cesta getCestaById(Long id_producto);
 	
 	public int insert(Cesta cesta);
 	

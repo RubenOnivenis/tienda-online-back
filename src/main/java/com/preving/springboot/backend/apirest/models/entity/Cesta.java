@@ -10,12 +10,8 @@ import com.sun.istack.NotNull;
 public class Cesta implements Serializable{
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_cesta;
-	
-	@NotNull @JoinTable(name="usuarios", joinColumns = @JoinColumn(name = "id_usuario"))
-	private Long id_usuario;
-	
-	@NotNull @JoinTable(name="productos", joinColumns = @JoinColumn(name = "id_producto"))
-	private Long id_producto;
+	@NotNull private Long id_usuario;
+	@NotNull private Long id_producto;
 
 	public Long getId_cesta() {
 		return id_cesta;
@@ -41,5 +37,6 @@ public class Cesta implements Serializable{
 		this.id_producto = id_producto;
 	}
 	
+	private static final long serialVersionUID = 1L;
 	
 }
