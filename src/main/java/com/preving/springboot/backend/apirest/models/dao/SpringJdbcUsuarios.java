@@ -76,7 +76,7 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 	@Override
 	public int delete(Long id_usuario) {
 		
-		String sql = "DELETE FORM usuarios WHERE id_usuario = :id_usuario;";
+		String sql = "DELETE FROM usuarios WHERE id_usuario = :id_usuario;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id_usuario", id_usuario);
 		

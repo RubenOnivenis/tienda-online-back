@@ -1,5 +1,6 @@
 package com.preving.springboot.backend.apirest.models.entity;
 
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import javax.persistence.*;
 import com.sun.istack.NotNull;
 
 @Entity @Table(name="devolucion")
-public class Devolucion {
+public class Devolucion implements Serializable{
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id_devolucion;
