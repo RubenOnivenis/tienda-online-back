@@ -36,12 +36,13 @@ public class SpritngJdbcCestaDatos extends JdbcDaoSupport implements ICestaDatos
 
 	@Override
 	public List<CestaDatos> getCestaDatosById(Long id_usuario) {
-		String sql="SELECT productos.nombre, productos.precio, productos.imagen "
+		String sql="SELECT cesta.id_cesta, productos.nombre, productos.precio, productos.imagen "
 				+ "FROM productos INNER JOIN cesta "
 				+ "ON cesta.id_producto = productos.id_producto "
 				+ "WHERE cesta.id_usuario = :id_usuario;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id_usuario", id_usuario);
+		
 		return getNamedJdbcTemplate().query(sql, params, new CestaDatosRowMapper());
 	}
 
@@ -61,6 +62,7 @@ public class SpritngJdbcCestaDatos extends JdbcDaoSupport implements ICestaDatos
 				
 				CestaDatos cestaDatos = new CestaDatos();
 				
+				cestaDatos.setId(rs.getLong("id_cesta"));
 				cestaDatos.setNombre(rs.getString("nombre"));
 				cestaDatos.setImagen(rs.getString("imagen"));
 				cestaDatos.setPrecio(rs.getString("precio"));

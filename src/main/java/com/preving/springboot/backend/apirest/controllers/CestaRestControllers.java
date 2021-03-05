@@ -46,7 +46,7 @@ public class CestaRestControllers {
 		return cestaService.update(cesta);
 	}
 	
-	@DeleteMapping("/cesta/{id}") @ResponseStatus(HttpStatus.NO_CONTENT)
+	@DeleteMapping("/cesta/{id_cesta}") @ResponseStatus(HttpStatus.NO_CONTENT)
 	public int delete(@PathVariable Long id_cesta) {
 		
 		return cestaService.delete(id_cesta);

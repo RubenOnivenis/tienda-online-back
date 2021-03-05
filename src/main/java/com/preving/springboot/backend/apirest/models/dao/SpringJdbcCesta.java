@@ -56,7 +56,7 @@ public class SpringJdbcCesta extends JdbcDaoSupport implements ICestaDao{
 	@Override
 	public int delete(Long id_cesta) {
 		
-		String sql="DELETE FROM cesta WHERE id_cesta=:id_cesta;";
+		String sql="DELETE FROM cesta WHERE id_cesta = :id_cesta;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id_cesta", id_cesta);
 		
