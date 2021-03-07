@@ -8,16 +8,9 @@ import com.sun.istack.NotNull;
 public class Comentarios {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)private Long id_comentario;
-	
 	@NotNull private String comentario;
-	
-	@NotNull 
-	@JoinTable(name="productos", joinColumns = @JoinColumn(name = "id_producto")) 
-	private Long id_producto;
-	
-	@NotNull 
-	@JoinTable(name="usuarios", joinColumns = @JoinColumn(name = "id_usuario")) 
-	private Long id_usuario;
+	@NotNull private Long id_producto;
+	@NotNull private Long id_usuario;
 	
 	public Long getId_comentario() {
 		return id_comentario;

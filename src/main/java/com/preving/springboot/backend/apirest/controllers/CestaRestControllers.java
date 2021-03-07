@@ -28,9 +28,9 @@ public class CestaRestControllers {
 		return cestaService.findAll();
 	}
 	
-	@GetMapping("/cesta/{id_producto}")
-	public Cesta show (@PathVariable Long id_producto) {
-		return cestaService.findById(id_producto);
+	@GetMapping("/cesta/{id_cesta}")
+	public Cesta show (@PathVariable Long id_cesta) {
+		return cestaService.findById(id_cesta);
 	}
 	
 	@PostMapping("/cesta") @ResponseStatus(HttpStatus.CREATED)

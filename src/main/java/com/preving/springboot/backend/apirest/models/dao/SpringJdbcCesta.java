@@ -36,7 +36,7 @@ public class SpringJdbcCesta extends JdbcDaoSupport implements ICestaDao{
 	@Override
 	public Cesta getCestaById(Long id_cesta) {
 		
-		String sql="SELECT * WHERE id_cesta=:id_cesta";
+		String sql="SELECT * FROM cesta WHERE id_cesta=:id_cesta";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id_cesta", id_cesta);
 		

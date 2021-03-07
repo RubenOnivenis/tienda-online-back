@@ -12,7 +12,7 @@ public interface ICestaService {
 	
 	public int delete(Long id);
 	
-	public Cesta findById(Long id);
+	public Cesta findById(Long id_cesta);
 	
 	public int insert (Cesta cesta);
 	

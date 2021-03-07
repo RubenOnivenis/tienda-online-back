@@ -11,6 +11,7 @@ public class Producto implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_producto;
 	private String nombre;
 	private Float precio;
+	private Float precio_oferta;
 	private String imagen;
 	private String descr;
 	private Integer diasConsumicion;
@@ -34,6 +35,12 @@ public class Producto implements Serializable{
 	}
 	public void setPrecio(Float precio) {
 		this.precio = precio;
+	}
+	public Float getPrecio_oferta() {
+		return precio_oferta;
+	}
+	public void setPrecio_oferta(Float precio_oferta) {
+		this.precio_oferta = precio_oferta;
 	}
 	public String getImagen() {
 		return imagen;

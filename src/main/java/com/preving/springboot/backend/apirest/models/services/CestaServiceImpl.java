@@ -32,9 +32,9 @@ public class CestaServiceImpl implements ICestaService {
 	}
 
 	@Override
-	public Cesta findById(Long id) {
+	public Cesta findById(Long id_cesta) {
 
-		return cestaDao.getCestaById(id);
+		return cestaDao.getCestaById(id_cesta);
 	}
 
 	@Override

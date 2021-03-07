@@ -18,7 +18,7 @@ import com.preving.springboot.backend.apirest.models.entity.Cesta;
 import com.preving.springboot.backend.apirest.models.entity.CestaDatos;
 
 @Repository
-public class SpritngJdbcCestaDatos extends JdbcDaoSupport implements ICestaDatosDao{
+public class SpringJdbcCestaDatos extends JdbcDaoSupport implements ICestaDatosDao{
 
 	@Autowired
 	public void setDs(DataSource dataSource) {
@@ -36,7 +36,7 @@ public class SpritngJdbcCestaDatos extends JdbcDaoSupport implements ICestaDatos
 
 	@Override
 	public List<CestaDatos> getCestaDatosById(Long id_usuario) {
-		String sql="SELECT cesta.id_cesta, productos.nombre, productos.precio, productos.imagen "
+		String sql="SELECT cesta.id_cesta, productos.id_producto, productos.nombre, productos.precio, productos.precio_oferta, productos.imagen "
 				+ "FROM productos INNER JOIN cesta "
 				+ "ON cesta.id_producto = productos.id_producto "
 				+ "WHERE cesta.id_usuario = :id_usuario;";
@@ -63,9 +63,11 @@ public class SpritngJdbcCestaDatos extends JdbcDaoSupport implements ICestaDatos
 				CestaDatos cestaDatos = new CestaDatos();
 				
 				cestaDatos.setId(rs.getLong("id_cesta"));
+				cestaDatos.setId_producto(rs.getLong("id_producto"));
 				cestaDatos.setNombre(rs.getString("nombre"));
 				cestaDatos.setImagen(rs.getString("imagen"));
-				cestaDatos.setPrecio(rs.getString("precio"));
+				cestaDatos.setPrecio(rs.getFloat("precio"));
+				cestaDatos.setPrecio_oferta(rs.getFloat("precio_oferta"));
 				
 				return cestaDatos;
 				
