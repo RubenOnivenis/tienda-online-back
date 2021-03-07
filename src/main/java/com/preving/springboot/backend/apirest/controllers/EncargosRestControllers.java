@@ -20,21 +20,25 @@ public class EncargosRestControllers {
 		return encargosService.findAll();
 	}
 	
-	@GetMapping("/encargo/{id}")
-	public Encargos show(@PathVariable Long id) {
+	@GetMapping("/encargo/{id_encargos}")
+	public Encargos show(@PathVariable Long id_encargos) {
 		
-		return encargosService.findById(id);
+		return encargosService.findById(id_encargos);
 	}
 	
-	@PostMapping("/encargos/{id}") @ResponseStatus(HttpStatus.CREATED)
-	public Encargos update(@RequestBody Encargos encargos, @PathVariable Long id) {
+	@PostMapping("/encargos") @ResponseStatus(HttpStatus.CREATED)
+	public int create(@RequestBody Encargos encargos) {
 		
-		Encargos encargosActuales = encargosService.findById(id);
-		encargosActuales.setCodigo_descuento(encargos.getCodigo_descuento());
-		encargosActuales.setPrecio_encargo(encargos.getPrecio_encargo());
-		
-		return encargosService.save(encargosActuales);
+		return encargosService.save(encargos);
 	}
+	
+	/*@PutMapping("/encargos/{id_encargo}") @ResponseStatus(HttpStatus.CREATED)
+	public Encargos update(@RequestBody Encargos encargos, @PathVariable Long id_encargo) {
+		
+		encargos.setId_encargo(id_encargo);
+		
+		return encargosService.update(encargos);
+	}*/
 	
 	@DeleteMapping("/encargos/{id}") @ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {

@@ -12,29 +12,37 @@ import com.preving.springboot.backend.apirest.models.entity.Encargos;
 public class EncargosServiceImpl implements IEncargosService  {
 
 	@Autowired private IEncargosDao encargosDao;
-	
+
 	@Override
 	public List<Encargos> findAll() {
-		// TODO Auto-generated method stub
-		return (List<Encargos>) encargosDao.findAll();
+
+		return encargosDao.getEncargos();
 	}
 
 	@Override
-	public Encargos save(Encargos encargos) {
-		// TODO Auto-generated method stub
-		return encargosDao.save(encargos);
+	public int save(Encargos encargos) {
+
+		return encargosDao.insert(encargos);
 	}
 
 	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		encargosDao.deleteById(id);
+	public int delete(Long id_encargo) {
+
+		return encargosDao.delete(id_encargo);
 	}
 
 	@Override
-	public Encargos findById(Long id) {
-		// TODO Auto-generated method stub
-		return encargosDao.findById(id).orElse(null);
+	public Encargos findById(Long id_encargo) {
+
+		return encargosDao.getEncargoById(id_encargo);
 	}
+
+	@Override
+	public int update(Encargos encargos) {
+
+		return encargosDao.update(encargos);
+	}
+	
+	
 
 }

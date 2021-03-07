@@ -8,10 +8,12 @@ public interface IEncargosService {
 	
 	public List<Encargos> findAll();
 	
-	public Encargos save(Encargos encargos);
+	public int save(Encargos encargos);
 	
-	public void delete(Long id);
+	public int delete(Long id_encargo);
 	
-	public Encargos findById(Long id);
+	public Encargos findById(Long id_encargo);
+	
+	public int update(Encargos encargos);
 
 }

@@ -5,15 +5,17 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.sun.istack.NotNull;
+
 @Entity @Table(name="encargos") 
 public class Encargos implements Serializable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_encargo;
-	private Long id_usuario;
-	private Float precio_encargo;
-	private Date fch_pedido;
-	private String codigo_descuento;
-	private Date fch_encargo_enviado;
+	@NotNull private Long id_usuario;
+	@NotNull private Float precio_encargo;
+	@NotNull private Date fch_pedido;
+	//@NotNull private String codigo_descuento;
+	@NotNull private Date fch_encargo_enviado;
 	private Date fch_encargo_recibido;
 	
 	public Long getId_encargo() {
@@ -40,12 +42,12 @@ public class Encargos implements Serializable {
 	public void setFch_pedido(Date fch_pedido) {
 		this.fch_pedido = fch_pedido;
 	}
-	public String getCodigo_descuento() {
+	/*public String getCodigo_descuento() {
 		return codigo_descuento;
 	}
 	public void setCodigo_descuento(String codigo_descuento) {
 		this.codigo_descuento = codigo_descuento;
-	}
+	}*/
 	public Date getFch_encargo_enviado() {
 		return fch_encargo_enviado;
 	}
