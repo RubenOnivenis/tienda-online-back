@@ -41,9 +41,9 @@ public class EncargosRestControllers {
 	}*/
 	
 	@DeleteMapping("/encargos/{id}") @ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public int delete(@PathVariable Long id) {
 		
-		encargosService.delete(id);
+		return encargosService.delete(id);
 		
 	}
 }

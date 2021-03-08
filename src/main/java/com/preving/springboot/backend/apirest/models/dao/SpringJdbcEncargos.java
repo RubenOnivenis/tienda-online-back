@@ -94,6 +94,7 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 				Encargos encargos = new Encargos();
 				
 				encargos.setId_encargo(rs.getLong("id_encargo"));
+				encargos.setId_usuario(rs.getLong("id_usuario"));
 				encargos.setPrecio_encargo(rs.getFloat("precio_encargo"));
 				encargos.setFch_pedido(rs.getDate("fch_pedido"));
 				encargos.setFch_encargo_enviado(rs.getDate("fch_encargo_enviado"));
