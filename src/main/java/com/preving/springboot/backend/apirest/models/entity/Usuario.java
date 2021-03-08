@@ -11,6 +11,7 @@ public class Usuario implements Serializable {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_usuario;
 	@NotNull @Column(unique = true) private String nombre_usuario;
+	private String imagen_usuario;
 	@NotNull private String nombre;
 	@NotNull private String apellidos;
 	@NotNull @Column(unique = true) private String correo;
@@ -30,11 +31,12 @@ public class Usuario implements Serializable {
 		
 	}
 	
-	public Usuario(String nombre_usuario, String nombre, String apellidos, String correo, String pass,
+	public Usuario(String nombre_usuario, String imagen_usuario, String nombre, String apellidos, String correo, String pass,
 			String cod_postal, String domicilio, String localidad, String provincia, String cod_postal_2,
 			String domicilio_2, String localidad_2, String provincia_2, String tarjeta_credito, String telefono) {
 		super();
 		this.nombre_usuario = nombre_usuario;
+		this.imagen_usuario = imagen_usuario;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.correo = correo;
@@ -51,8 +53,6 @@ public class Usuario implements Serializable {
 		this.telefono = telefono;
 	}
 
-
-
 	public Long getId_usuario() {
 		return id_usuario;
 	}
@@ -65,6 +65,14 @@ public class Usuario implements Serializable {
 	public void setNombre_usuario(String nombre_usuario) {
 		this.nombre_usuario = nombre_usuario;
 	}
+	public String getImagen_usuario() {
+		return imagen_usuario;
+	}
+
+	public void setImagen_usuario(String imagen_usuario) {
+		this.imagen_usuario = imagen_usuario;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

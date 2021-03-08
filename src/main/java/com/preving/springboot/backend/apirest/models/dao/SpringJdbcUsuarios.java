@@ -139,6 +139,7 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 				
 				usuario.setId_usuario(rs.getLong("id_usuario"));
 				usuario.setNombre_usuario(rs.getString("nombre_usuario"));
+				usuario.setImagen_usuario(rs.getString("imagen_usuario"));
 				usuario.setNombre(rs.getString("nombre"));
 				usuario.setApellidos(rs.getString("apellidos"));
 				usuario.setCorreo(rs.getString("correo"));
