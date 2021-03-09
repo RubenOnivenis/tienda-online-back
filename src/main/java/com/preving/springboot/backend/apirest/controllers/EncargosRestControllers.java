@@ -21,9 +21,15 @@ public class EncargosRestControllers {
 	}
 	
 	@GetMapping("/encargo/{id_encargos}")
-	public Encargos show(@PathVariable Long id_encargos) {
+	public List<Encargos> show(@PathVariable Long id_encargos) {
 		
 		return encargosService.findById(id_encargos);
+	}
+	
+	@GetMapping("/encargosId/{id_usuario}")
+	public Encargos verUltimoId(@PathVariable Long id_usuario) {
+		
+		return encargosService.ultimoId(id_usuario);
 	}
 	
 	@PostMapping("/encargos") @ResponseStatus(HttpStatus.CREATED)

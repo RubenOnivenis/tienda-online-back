@@ -32,7 +32,7 @@ public class EncargosServiceImpl implements IEncargosService  {
 	}
 
 	@Override
-	public Encargos findById(Long id_encargo) {
+	public List<Encargos> findById(Long id_encargo) {
 
 		return encargosDao.getEncargoById(id_encargo);
 	}
@@ -41,6 +41,12 @@ public class EncargosServiceImpl implements IEncargosService  {
 	public int update(Encargos encargos) {
 
 		return encargosDao.update(encargos);
+	}
+
+	@Override
+	public Encargos ultimoId(Long id_usuario) {
+
+		return encargosDao.ultimoEncargo(id_usuario);
 	}
 	
 	

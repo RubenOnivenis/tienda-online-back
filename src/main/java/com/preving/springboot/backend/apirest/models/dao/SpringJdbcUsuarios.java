@@ -48,12 +48,13 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 	@Override
 	public int insert(Usuario usuario) {
 		
-		String sql = "INSERT INTO usuarios(nombre_usuario, nombre, apellidos, correo, pass, cod_postal, domicilio, localidad, provincia, "
+		String sql = "INSERT INTO usuarios(nombre_usuario, imagen_usuario, nombre, apellidos, correo, pass, cod_postal, domicilio, localidad, provincia, "
 				+ "cod_postal_2, domicilio_2, localidad_2, provincia_2, tarjeta_credito, telefono) "
-				+ "VALUES (:nombre_usuario, :nombre, :apellidos, :correo, :pass, :cod_postal, :domicilio, :localidad,"
+				+ "VALUES (:nombre_usuario, :imagen_usuario, :nombre, :apellidos, :correo, :pass, :cod_postal, :domicilio, :localidad,"
 				+ ":provincia, :cod_postal_2, :domicilio_2, :localidad_2, :provincia_2, :tarjeta_credito, :telefono);";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("nombre_usuario", usuario.getNombre_usuario());
+		params.addValue("imagen_usuario", usuario.getImagen_usuario());
 		params.addValue("nombre", usuario.getNombre());
 		params.addValue("apellidos", usuario.getApellidos());
 		params.addValue("correo", usuario.getCorreo());

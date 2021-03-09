@@ -8,6 +8,6 @@ public interface ICestaDatosDao {
 
 	public List<CestaDatos> getCestaDatos(); 
 	
-	public List<CestaDatos> getCestaDatosById(Long id_cesta);
+	public List<CestaDatos> getCestaDatosById(Long id_usuario);
 	
 }

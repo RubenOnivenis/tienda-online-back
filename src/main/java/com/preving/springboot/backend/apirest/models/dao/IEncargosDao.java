@@ -11,7 +11,9 @@ public interface IEncargosDao{
 	
 	public List<Encargos> getEncargos();
 	
-	public Encargos getEncargoById(Long id_encargo);
+	public List<Encargos> getEncargoById(Long id_usuario);
+	
+	public Encargos ultimoEncargo(Long id_usuario);
 	
 	public int insert(Encargos encargos);
 	

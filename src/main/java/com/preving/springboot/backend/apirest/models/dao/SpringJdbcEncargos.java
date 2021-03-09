@@ -36,15 +36,25 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 	}
 
 	@Override
-	public Encargos getEncargoById(Long id_encargo) {
+	public List<Encargos> getEncargoById(Long id_usuario) {
 		
-		String sql = "SELECT * FROM encargos WHERE id_encargo = :id_encargo;";
+		String sql = "SELECT * FROM encargos WHERE id_usuario = :id_usuario;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("id_encargo", id_encargo);
+		params.addValue("id_usuario", id_usuario);
+		
+		return getNamedJdbcTemplate().query(sql, params, new EncargosRowMapper());
+	}
+
+	@Override
+	public Encargos ultimoEncargo(Long id_usuario) {
+		
+		String sql = "SELECT MAX(id_encargo) AS id FROM encargos WHERE id_usuario=:id_usuario;";
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id_usuario", id_usuario);
 		
 		return (Encargos) getNamedJdbcTemplate().queryForObject(sql, params, new EncargosRowMapper());
 	}
-
+	
 	@Override
 	public int insert(Encargos encargos) {
 		
@@ -69,7 +79,7 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 		
 		return getNamedJdbcTemplate().update(sql, params);
 	}
-
+	
 	@Override
 	public int update(Encargos encargos) {
 		
