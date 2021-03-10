@@ -8,6 +8,6 @@ public interface IComentariosDatosService {
 
 	public List<ComentariosDatos> findAll();
 	
-	public List<ComentariosDatos> findById(Long id_comentario);
+	public List<ComentariosDatos> findById(Long id_producto);
 	
 }

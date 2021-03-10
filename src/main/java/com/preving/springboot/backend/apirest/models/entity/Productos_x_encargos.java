@@ -16,6 +16,7 @@ public class Productos_x_encargos implements Serializable {
 	@NotNull private Long id_producto;
 	@NotNull private Float precio_producto;
 	@NotNull private Long cantidad;
+	@NotNull private Long id_usuario;
 	
 	public Long getId() {
 		return id;
@@ -36,7 +37,7 @@ public class Productos_x_encargos implements Serializable {
 		this.id_producto = id_producto;
 	}
 	public Float getPrecio_producto() {
-		return precio_producto;
+		return this.precio_producto;
 	}
 	public void setPrecio_producto(Float precio_producto) {
 		this.precio_producto = precio_producto;
@@ -46,9 +47,15 @@ public class Productos_x_encargos implements Serializable {
 	}
 	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
+	}	
+	public Long getId_usuario() {
+		return id_usuario;
 	}
-	
-	
+	public void setId_usuario(Long id_usuario) {
+		this.id_usuario = id_usuario;
+	}
+
+
 	private static final long serialVersionUID = 1L;
 	
 }

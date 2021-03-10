@@ -20,7 +20,7 @@ public class Productos_x_encargosServiceImpl implements IProducto_x_encargoServi
 	}
 
 	@Override
-	public int save(Productos_x_encargos producto_x_encargo) {
+	public Number save(Productos_x_encargos producto_x_encargo) {
 
 		return productos_x_encargosDao.insert(producto_x_encargo);
 	}

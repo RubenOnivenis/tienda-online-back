@@ -16,6 +16,7 @@ public class Encargos implements Serializable {
 	@NotNull private Date fch_pedido;
 	@NotNull private Date fch_encargo_enviado;
 	private Date fch_encargo_recibido;
+	private String estado;
 	
 	public Long getId_encargo() {
 		return id_encargo;
@@ -60,6 +61,13 @@ public class Encargos implements Serializable {
 		this.fch_encargo_recibido = fch_encargo_recibido;
 	}
 	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 }

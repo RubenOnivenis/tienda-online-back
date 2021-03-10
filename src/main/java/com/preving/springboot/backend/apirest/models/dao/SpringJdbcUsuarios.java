@@ -123,6 +123,17 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 		return getNamedJdbcTemplate().update(sql, params);
 	}
 	
+	@Override
+	public int upload(Usuario usuario, Long id_usuario) {
+
+		String sql = "UPDATE usuarios SET imagen_usuario=:imagen_usuario WHERE id_usuario=:id_usuario;";
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id_usuario", usuario.getId_usuario());
+		params.addValue("imagen_usuario", usuario.getImagen_usuario());
+		
+		return getNamedJdbcTemplate().update(sql, params);
+	}
+	
 	private NamedParameterJdbcTemplate getNamedJdbcTemplate(){
 		
 	    if (this.namedParameterJdbcTemplate == null){
@@ -161,5 +172,6 @@ public class SpringJdbcUsuarios extends JdbcDaoSupport implements IUsuarioDao{
 			}
 			
 		}
+
 	
 }

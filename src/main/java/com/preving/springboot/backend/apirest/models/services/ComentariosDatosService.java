@@ -20,9 +20,9 @@ public class ComentariosDatosService implements IComentariosDatosService{
 	}
 
 	@Override
-	public List<ComentariosDatos> findById(Long id_comentario) {
+	public List<ComentariosDatos> findById(Long id_producto) {
 
-		return comentariosDatosDao.getComentariosDatosById(id_comentario);
+		return comentariosDatosDao.getComentariosDatosById(id_producto);
 	}
 	
 	

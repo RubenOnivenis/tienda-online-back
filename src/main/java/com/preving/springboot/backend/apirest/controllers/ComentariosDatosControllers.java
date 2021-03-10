@@ -22,8 +22,8 @@ public class ComentariosDatosControllers {
 		return comentariosDatosService.findAll();
 	}
 	
-	@GetMapping("/comentariosDatos/{id_comentario}")
-	public List<ComentariosDatos> show(@PathVariable Long id_comentario){
-		return comentariosDatosService.findById(id_comentario);
+	@GetMapping("/comentariosDatos/{id_producto}")
+	public List<ComentariosDatos> show(@PathVariable Long id_producto){
+		return comentariosDatosService.findById(id_producto);
 	}
 }

@@ -38,7 +38,7 @@ public class SpringJdbcComentariosDatos  extends JdbcDaoSupport implements ICome
 	@Override
 	public List<ComentariosDatos> getComentariosDatosById(Long id_producto) {
 
-		String sql = "SELECT comentarios.id_usuario, usuarios.nombre, usuarios.nombre_usuario"
+		String sql = "SELECT comentarios.comentario, usuarios.nombre, usuarios.nombre_usuario"
 					+ " FROM comentarios INNER JOIN usuarios"
 					+ " ON comentarios.id_usuario = usuarios.id_usuario"
 					+ " WHERE id_producto =:id_producto;";

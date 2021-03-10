@@ -64,6 +64,17 @@ public class SpringJdbcCesta extends JdbcDaoSupport implements ICestaDao{
 	}
 	
 	@Override
+	public int deleteAll(Long id_usuario) {
+
+		String sql="DELETE FROM cesta WHERE id_usuario = :id_usuario;";
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id_usuario", id_usuario);
+		
+		return getNamedJdbcTemplate().update(sql, params);
+
+	}
+	
+	@Override
 	public int update(Cesta cesta) {
 		
 		String sql="UPDATE cesta SET id_usuario=:id_usuario, id_producto=:id_producto WHERE id_cesta=:id_cesta;";
@@ -99,4 +110,5 @@ public class SpringJdbcCesta extends JdbcDaoSupport implements ICestaDao{
 			}
 			
 		}
+
 }

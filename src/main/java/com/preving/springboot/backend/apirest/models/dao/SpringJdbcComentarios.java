@@ -37,9 +37,7 @@ public class SpringJdbcComentarios extends JdbcDaoSupport implements IComentario
 	@Override
 	public List<Comentarios> getComentariosById(Long id_producto) {
 		
-		String sql = "SELECT * FROM comentarios INNER JOIN usuarios"
-					+ " ON comentarios.id_usuario = usuarios.id_usuario"
-					+ " WHERE id_producto=:id_producto;";
+		String sql = "SELECT * FROM comentarios WHERE id_producto=:id_producto;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id_producto", id_producto);
 		

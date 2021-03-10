@@ -52,6 +52,12 @@ public class UsuarioServiceImpl implements IUsuarioService {
 	public int updatePass(Usuario usuario) {
 		
 		return usuarioDao.updatePass(usuario);
+	}
+
+	@Override
+	public int upload(Usuario usuario, Long id_usuario) {
+
+		return usuarioDao.upload(usuario, id_usuario);
 	}	
 	
 }

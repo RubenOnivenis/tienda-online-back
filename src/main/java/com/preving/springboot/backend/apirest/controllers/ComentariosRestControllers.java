@@ -19,9 +19,9 @@ public class ComentariosRestControllers {
 		return comentariosService.findAll();
 	}
 	
-	@GetMapping("/comentarios/{id_comentario}")
-	public Comentarios show(@PathVariable Long id_comentario) {
-		return comentariosService.findById(id_comentario);
+	@GetMapping("/comentarios/{id_producto}")
+	public Comentarios show(@PathVariable Long id_producto) {
+		return comentariosService.findById(id_producto);
 	}
 	
 	@PostMapping("/comentarios") @ResponseStatus(HttpStatus.CREATED)	//Crear usuario

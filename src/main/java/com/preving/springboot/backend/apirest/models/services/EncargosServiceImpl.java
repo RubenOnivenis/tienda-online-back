@@ -20,7 +20,7 @@ public class EncargosServiceImpl implements IEncargosService  {
 	}
 
 	@Override
-	public int save(Encargos encargos) {
+	public Number save(Encargos encargos) {
 
 		return encargosDao.insert(encargos);
 	}
@@ -44,9 +44,15 @@ public class EncargosServiceImpl implements IEncargosService  {
 	}
 
 	@Override
-	public Encargos ultimoId(Long id_usuario) {
+	public List<Encargos> ultimoId(Long id_usuario) {
 
 		return encargosDao.ultimoEncargo(id_usuario);
+	}
+
+	@Override
+	public int modificarEstado(Encargos encargos) {
+
+		return encargosDao.modificarEstado(encargos);
 	}
 	
 	

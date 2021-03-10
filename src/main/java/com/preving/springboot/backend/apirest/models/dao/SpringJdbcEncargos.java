@@ -12,6 +12,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.preving.springboot.backend.apirest.models.entity.Encargos;
@@ -46,18 +48,18 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 	}
 
 	@Override
-	public Encargos ultimoEncargo(Long id_usuario) {
+	public List<Encargos> ultimoEncargo(Long id_usuario) {
 		
-		String sql = "SELECT MAX(id_encargo) AS id FROM encargos WHERE id_usuario=:id_usuario;";
+		String sql = "SELECT MAX(id_encargo) AS id_encargo FROM encargos WHERE id_usuario=:id_usuario;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("id_usuario", id_usuario);
 		
-		return (Encargos) getNamedJdbcTemplate().queryForObject(sql, params, new EncargosRowMapper());
+		return getNamedJdbcTemplate().query(sql, params, new EncargosMaxRowMapper());
 	}
 	
 	@Override
-	public int insert(Encargos encargos) {
-		
+	public Number insert(Encargos encargos) {
+		KeyHolder keyHolder = new GeneratedKeyHolder();
 		String sql = "INSERT INTO encargos(id_usuario, precio_encargo, fch_pedido, fch_encargo_enviado, fch_encargo_recibido) "
 				+ "VALUES (:id_usuario, :precio_encargo, :fch_pedido, :fch_encargo_enviado, :fch_encargo_recibido);";
 		MapSqlParameterSource params = new MapSqlParameterSource();
@@ -67,7 +69,8 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 		params.addValue("fch_encargo_enviado", encargos.getFch_encargo_enviado());
 		params.addValue("fch_encargo_recibido", encargos.getFch_encargo_recibido());
 		
-		return getNamedJdbcTemplate().update(sql, params);
+		getNamedJdbcTemplate().update(sql, params, keyHolder);
+		return keyHolder.getKey();
 	}
 
 	@Override
@@ -83,9 +86,17 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 	@Override
 	public int update(Encargos encargos) {
 		
-		//String sql = "UPDATE encargos SET id_usuario=:id_usuario precio_encargo=:precio_encargo;";
-		//MIRAR BIEN ESTO
 		return 0;
+	}
+	
+	@Override
+	public int modificarEstado(Encargos encargos) {
+
+		String sql = "UPDATE encargos SET estado=:estado WHERE id_encargo=:id_encargo;";
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id_encargo", encargos.getId_encargo());
+		
+		return getNamedJdbcTemplate().update(sql, params);
 	}
 	
 	private NamedParameterJdbcTemplate getNamedJdbcTemplate(){
@@ -115,5 +126,19 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 			}
 			
 		}
+		
+		private class EncargosMaxRowMapper implements RowMapper{
+					
+					public Object mapRow(ResultSet rs, int i) throws SQLException{
+						
+						Encargos encargos = new Encargos();
+						
+						encargos.setId_encargo(rs.getLong("id_encargo"));
+						
+						return encargos;
+						
+					}
+					
+				}
 
 }

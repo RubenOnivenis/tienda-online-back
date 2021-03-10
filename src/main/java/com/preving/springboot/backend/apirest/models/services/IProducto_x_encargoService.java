@@ -9,7 +9,7 @@ public interface IProducto_x_encargoService {
 	
 	public List<Productos_x_encargos> findAll();
 	
-	public int save(Productos_x_encargos producto_x_encargo);
+	public Number save(Productos_x_encargos producto_x_encargo);
 	
 	public int delete(Long id);
 	

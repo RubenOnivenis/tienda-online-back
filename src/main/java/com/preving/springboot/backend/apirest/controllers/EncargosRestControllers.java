@@ -27,29 +27,28 @@ public class EncargosRestControllers {
 	}
 	
 	@GetMapping("/encargosId/{id_usuario}")
-	public Encargos verUltimoId(@PathVariable Long id_usuario) {
+	public Long verUltimoId(@PathVariable Long id_usuario) {
 		
-		return encargosService.ultimoId(id_usuario);
+		List<Encargos> lista = encargosService.ultimoId(id_usuario);
+		
+		return lista.get(0).getId_encargo();
 	}
 	
 	@PostMapping("/encargos") @ResponseStatus(HttpStatus.CREATED)
-	public int create(@RequestBody Encargos encargos) {
+	public Number create(@RequestBody Encargos encargos) {
 		
 		return encargosService.save(encargos);
 	}
-	
-	/*@PutMapping("/encargos/{id_encargo}") @ResponseStatus(HttpStatus.CREATED)
-	public Encargos update(@RequestBody Encargos encargos, @PathVariable Long id_encargo) {
-		
-		encargos.setId_encargo(id_encargo);
-		
-		return encargosService.update(encargos);
-	}*/
 	
 	@DeleteMapping("/encargos/{id}") @ResponseStatus(HttpStatus.NO_CONTENT)
 	public int delete(@PathVariable Long id) {
 		
 		return encargosService.delete(id);
+	}
+	
+	@PutMapping("/encargos") @ResponseStatus(HttpStatus.CREATED)
+	public int modificarEstado(@PathVariable Encargos encargos) {
 		
+		return encargosService.modificarEstado(encargos);
 	}
 }

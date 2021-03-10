@@ -35,8 +35,7 @@ public class Productos_x_encargosControllers {
 	}
 	
 	@PostMapping("/productos_x_encargos") @ResponseStatus(HttpStatus.CREATED)
-	public int create(@RequestBody Productos_x_encargos Producto_x_encargo) {
-		
+	public Number create(@RequestBody Productos_x_encargos Producto_x_encargo) {
 		return productos_x_encargosService.save(Producto_x_encargo);
 	}
 	

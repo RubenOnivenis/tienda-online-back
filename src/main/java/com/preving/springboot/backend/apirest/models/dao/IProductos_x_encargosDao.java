@@ -10,7 +10,7 @@ public interface IProductos_x_encargosDao {
 	
 	public Productos_x_encargos getProducto_x_encargosById(Long id);
 	
-	public int insert(Productos_x_encargos Producto_x_encargo);
+	public Number insert(Productos_x_encargos Producto_x_encargo);
 	
 	public int delete(Long id);
 	

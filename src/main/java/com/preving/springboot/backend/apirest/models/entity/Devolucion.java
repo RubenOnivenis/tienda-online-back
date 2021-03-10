@@ -10,19 +10,11 @@ import com.sun.istack.NotNull;
 @Entity @Table(name="devolucion")
 public class Devolucion implements Serializable{
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Long id_devolucion;
-	
-	@NotNull @JoinTable(name="encargos", joinColumns = @JoinColumn(name = "id_encargo")) 
-	private Long id_encargo;
-	
-	@NotNull @Temporal(TemporalType.DATE)
-	private Date fch_encargo_cancelado_devuelto;
-	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id_devolucion;
+	@NotNull private Long id_encargo;
+	@NotNull private Date fch_encargo_cancelado_devuelto;
 	private String encargo_cncl_devuelto_descripcion;
-	
-	@NotNull 
-	private Boolean encargo_cncl_devuelto;
+	@NotNull private Boolean encargo_cncl_devuelto;
 	
 	public void prePersist() {
 		fch_encargo_cancelado_devuelto = new Date();

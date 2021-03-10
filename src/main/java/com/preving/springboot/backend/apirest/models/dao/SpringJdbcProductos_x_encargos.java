@@ -1,5 +1,6 @@
 package com.preving.springboot.backend.apirest.models.dao;
 
+import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,6 +13,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.preving.springboot.backend.apirest.models.entity.Productos_x_encargos;
@@ -46,18 +49,18 @@ public class SpringJdbcProductos_x_encargos extends JdbcDaoSupport implements IP
 	}
 
 	@Override
-	public int insert(Productos_x_encargos Producto_x_encargo) {
-
-		String sql = "INSERT INTO producto_x_encargo(id_encargo, id_producto, precio_producto, cantidad) "
-				+ "VALUES (:id_encargo, :id_producto, :precio_producto, :cantidad);";
+	public Number insert(Productos_x_encargos Producto_x_encargo) {
 		
+		String sql = "INSERT INTO producto_x_encargo (id_encargo, id_producto, precio_producto, cantidad) "
+				+ "VALUES ((SELECT MAX(id_encargo) AS id_encargo FROM encargos WHERE id_usuario=:id_usuario), :id_producto, :precio_producto, :cantidad);";
 		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("id_encargo", Producto_x_encargo.getId_encargo());
+		params.addValue("id_usuario", Producto_x_encargo.getId_usuario());
 		params.addValue("id_producto", Producto_x_encargo.getId_producto());
 		params.addValue("precio_producto", Producto_x_encargo.getPrecio_producto());
 		params.addValue("cantidad", Producto_x_encargo.getCantidad());
 		
 		return getNamedJdbcTemplate().update(sql, params);
+		
 	}
 
 	@Override
@@ -96,6 +99,7 @@ public class SpringJdbcProductos_x_encargos extends JdbcDaoSupport implements IP
 				producto_x_encargo.setId_producto(rs.getLong("id_producto"));
 				producto_x_encargo.setPrecio_producto(rs.getFloat("precio_producto"));
 				producto_x_encargo.setCantidad(rs.getLong("cantidad"));
+				producto_x_encargo.setId_usuario(rs.getLong("id_usario"));
 				
 				
 				return producto_x_encargo;

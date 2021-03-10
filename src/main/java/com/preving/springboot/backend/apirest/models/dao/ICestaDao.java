@@ -16,4 +16,6 @@ public interface ICestaDao {
 	
 	public int update(Cesta cesta);
 	
+	public int deleteAll(Long id_usuario);
+	
 }

@@ -12,6 +12,8 @@ public interface ICestaService {
 	
 	public int delete(Long id);
 	
+	public int deleteAll(Long id_usuario);
+	
 	public Cesta findById(Long id_cesta);
 	
 	public int insert (Cesta cesta);

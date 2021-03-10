@@ -8,6 +8,6 @@ public interface IComentariosDatosDao {
 
 	public List<ComentariosDatos> getComentariosDatos();
 	
-	public List<ComentariosDatos> getComentariosDatosById(Long id);
+	public List<ComentariosDatos> getComentariosDatosById(Long id_producto);
 	
 }

@@ -20,4 +20,5 @@ public interface IUsuarioService {
 	
 	public int updatePass(Usuario usuario);
 	
+	public int upload(Usuario usuario, Long id_usuario);
 }

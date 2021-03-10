@@ -49,4 +49,10 @@ public class CestaServiceImpl implements ICestaService {
 		return cestaDao.update(cesta);
 	}
 
+	@Override
+	public int deleteAll(Long id_usuario) {
+
+		return cestaDao.deleteAll(id_usuario);
+	}
+
 }

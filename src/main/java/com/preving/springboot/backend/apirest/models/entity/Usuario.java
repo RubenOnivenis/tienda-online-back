@@ -27,16 +27,18 @@ public class Usuario implements Serializable {
 	private String tarjeta_credito;
 	private String telefono;
 	
+	private byte [] arrayByte;
+	
 	public Usuario() {
 		
 	}
 	
-	public Usuario(String nombre_usuario, String imagen_usuario, String nombre, String apellidos, String correo, String pass,
+	public Usuario(String nombre_usuario, byte [] arrayByte, String nombre, String apellidos, String correo, String pass,
 			String cod_postal, String domicilio, String localidad, String provincia, String cod_postal_2,
 			String domicilio_2, String localidad_2, String provincia_2, String tarjeta_credito, String telefono) {
 		super();
 		this.nombre_usuario = nombre_usuario;
-		this.imagen_usuario = imagen_usuario;
+		this.arrayByte = arrayByte;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.correo = correo;

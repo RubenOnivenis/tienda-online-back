@@ -52,4 +52,10 @@ public class CestaRestControllers {
 		return cestaService.delete(id_cesta);
 	}
 	
+	@DeleteMapping("/cestaCompleta/{id_usuario}") @ResponseStatus(HttpStatus.NO_CONTENT)
+	public int deleteAll(@PathVariable Long id_usuario) {
+		
+		return cestaService.deleteAll(id_usuario);
+	}
+	
 }
