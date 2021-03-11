@@ -16,6 +16,7 @@ public class Productos_x_encargos implements Serializable {
 	@NotNull private Long id_producto;
 	@NotNull private Float precio_producto;
 	@NotNull private Long cantidad;
+	
 	@NotNull private Long id_usuario;
 	
 	public Long getId() {

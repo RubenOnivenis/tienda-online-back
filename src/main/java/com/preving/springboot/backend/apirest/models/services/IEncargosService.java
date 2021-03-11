@@ -12,12 +12,14 @@ public interface IEncargosService {
 	
 	public int delete(Long id_encargo);
 	
-	public List<Encargos> findById(Long id_encargo);
+	public List<Encargos> findById(Long id_usuario);
 	
+	public List<Encargos> findByIdEncargo(Long id_encargo);
+	 
 	public List<Encargos> ultimoId(Long id_usuario);
 	
 	public int update(Encargos encargos);
 
-	public int modificarEstado(Encargos encargos);
+	public int modificarEstado(Encargos encargos, Long id_encargo);
 	
 }

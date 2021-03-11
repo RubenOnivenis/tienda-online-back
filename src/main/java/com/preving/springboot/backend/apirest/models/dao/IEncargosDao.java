@@ -13,6 +13,8 @@ public interface IEncargosDao{
 	
 	public List<Encargos> getEncargoById(Long id_usuario);
 	
+	public List<Encargos> getEncargoByIdEncargo(Long id_encargo);
+	
 	public List<Encargos> ultimoEncargo(Long id_usuario);
 	
 	public Number insert(Encargos encargos);
@@ -21,5 +23,5 @@ public interface IEncargosDao{
 	
 	public int update(Encargos encargos);
 	
-	public int modificarEstado(Encargos encargos);
+	public int modificarEstado(Encargos encargos, Long id_encargo);
 }

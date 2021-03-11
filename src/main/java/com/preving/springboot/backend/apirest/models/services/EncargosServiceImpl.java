@@ -32,11 +32,17 @@ public class EncargosServiceImpl implements IEncargosService  {
 	}
 
 	@Override
-	public List<Encargos> findById(Long id_encargo) {
+	public List<Encargos> findById(Long id_usuario) {
 
-		return encargosDao.getEncargoById(id_encargo);
+		return encargosDao.getEncargoById(id_usuario);
 	}
 
+	@Override
+	public List<Encargos> findByIdEncargo(Long id_encargo) {
+
+		return encargosDao.getEncargoByIdEncargo(id_encargo);
+	}
+	
 	@Override
 	public int update(Encargos encargos) {
 
@@ -50,11 +56,10 @@ public class EncargosServiceImpl implements IEncargosService  {
 	}
 
 	@Override
-	public int modificarEstado(Encargos encargos) {
+	public int modificarEstado(Encargos encargos, Long id_encargo) {
 
-		return encargosDao.modificarEstado(encargos);
+		return encargosDao.modificarEstado(encargos, id_encargo);
 	}
-	
 	
 
 }

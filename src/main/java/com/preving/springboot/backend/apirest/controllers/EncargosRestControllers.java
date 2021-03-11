@@ -20,10 +20,16 @@ public class EncargosRestControllers {
 		return encargosService.findAll();
 	}
 	
-	@GetMapping("/encargo/{id_encargos}")
-	public List<Encargos> show(@PathVariable Long id_encargos) {
+	@GetMapping("/encargo/{id_usuario}")
+	public List<Encargos> show(@PathVariable Long id_usuario) {
 		
-		return encargosService.findById(id_encargos);
+		return encargosService.findById(id_usuario);
+	}
+	
+	@GetMapping("/encargoId/{id_encargo}")
+	public List<Encargos> showEncargo(@PathVariable Long id_encargo){
+		
+		return encargosService.findByIdEncargo(id_encargo);
 	}
 	
 	@GetMapping("/encargosId/{id_usuario}")
@@ -46,9 +52,11 @@ public class EncargosRestControllers {
 		return encargosService.delete(id);
 	}
 	
-	@PutMapping("/encargos") @ResponseStatus(HttpStatus.CREATED)
-	public int modificarEstado(@PathVariable Encargos encargos) {
+	@PutMapping("/encargosEstado/{id_encargo}") @ResponseStatus(HttpStatus.CREATED)
+	public int modificarEstado(@RequestBody Encargos encargos, @PathVariable Long id_encargo) {
 		
-		return encargosService.modificarEstado(encargos);
+		encargos.setId_encargo(id_encargo);
+		
+		return encargosService.modificarEstado(encargos, id_encargo);
 	}
 }

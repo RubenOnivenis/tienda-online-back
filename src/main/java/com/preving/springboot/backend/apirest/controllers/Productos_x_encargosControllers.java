@@ -43,6 +43,5 @@ public class Productos_x_encargosControllers {
 	public int delete(@PathVariable Long id) {
 		
 		return productos_x_encargosService.delete(id);
-		
 	}
 }

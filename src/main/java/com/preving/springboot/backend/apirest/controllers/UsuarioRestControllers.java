@@ -28,54 +28,17 @@ public class UsuarioRestControllers {
 	@GetMapping("/usuario/{id_usuario}")	//Usuarios por id
 	public Usuario show(@PathVariable Long id_usuario) {
 		
-		/*Usuario usuario = this.usuarioService.findById(id_usuario);
-		Path rutaImagen = Paths.get(usuario.getImagen_usuario());
-		try {
-			
-			byte [] arrayByte = Files.readAllBytes(rutaImagen);
-			Usuario usuarioAux = new Usuario(usuario.getNombre_usuario(), arrayByte, usuario.getNombre(), usuario.getApellidos(), usuario.getCorreo(), usuario.getPass(), usuario.getCod_postal(), usuario.getDomicilio(), usuario.getLocalidad(), usuario.getProvincia(), usuario.getCod_postal_2(), usuario.getDomicilio_2(), usuario.getLocalidad_2(), usuario.getProvincia_2(), usuario.getTarjeta_credito(), usuario.getTelefono());
-			
-			return usuarioAux;
-		}catch(IOException e){
-			
-		}*/
-		
-		//return usuario;
 		return usuarioService.findById(id_usuario);
 	}
 	
 	@PostMapping("/usuarios") @ResponseStatus(HttpStatus.CREATED)	//Crear usuario
-	public int create(@RequestBody Usuario usuario, @RequestParam("imagen_usuario") MultipartFile foto) {
+	public int create(@RequestBody Usuario usuario) {
 		
 		return usuarioService.save(usuario);
 	}
 	
-	/*@PatchMapping(value="/usuarios/{id_usuario}/foto", consumes = {"multipart/form-data"}) 
-	@ResponseStatus(HttpStatus.CREATED)
-	public int upload(@ModelAttribute Usuario usuarios, @ModelAttribute("foto") MultipartFile foto, @PathVariable Long id_usuario) {
-		
-		if(!foto.isEmpty()) {
-			Path directorioRecursos = Paths.get("src//main//resources//static/uploads");
-			String rootPath = directorioRecursos.toFile().getAbsolutePath();
-			try
-			{
-				byte[] bytes = foto.getBytes();
-				Path rutaCompleta = Paths.get(rootPath + "//" + foto.getOriginalFilename());
-				Files.write(rutaCompleta, bytes);
-				usuarios.setImagen_usuario(rutaCompleta.toString());
-				
-				return this.usuarioService.upload(usuarios, id_usuario);
-				
-			}catch(IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		return 0;
-	}*/
-	
 	@PutMapping("/usuarios/{id}") @ResponseStatus(HttpStatus.CREATED)	//Modificar usuario, menos la contraseña
-	public int update(@RequestBody Usuario usuario, @PathVariable Long id/*, @RequestParam("imagen_usuario") MultipartFile foto*/) {
+	public int update(@RequestBody Usuario usuario, @PathVariable Long id) {
 		
 		usuario.setId_usuario(id);
 		

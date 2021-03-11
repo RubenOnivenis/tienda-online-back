@@ -38,6 +38,16 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 	}
 
 	@Override
+	public List<Encargos> getEncargoByIdEncargo(Long id_encargo) {
+
+		String sql = "SELECT * FROM encargos WHERE id_encargo = :id_encargo;";
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("id_encargo", id_encargo);
+		
+		return getNamedJdbcTemplate().query(sql, params, new EncargosRowMapper());
+	}
+	
+	@Override
 	public List<Encargos> getEncargoById(Long id_usuario) {
 		
 		String sql = "SELECT * FROM encargos WHERE id_usuario = :id_usuario;";
@@ -90,10 +100,11 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 	}
 	
 	@Override
-	public int modificarEstado(Encargos encargos) {
+	public int modificarEstado(Encargos encargos, Long id_encargo) {
 
 		String sql = "UPDATE encargos SET estado=:estado WHERE id_encargo=:id_encargo;";
 		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("estado", encargos.getEstado());
 		params.addValue("id_encargo", encargos.getId_encargo());
 		
 		return getNamedJdbcTemplate().update(sql, params);
@@ -120,6 +131,7 @@ public class SpringJdbcEncargos extends JdbcDaoSupport implements IEncargosDao{
 				encargos.setFch_pedido(rs.getDate("fch_pedido"));
 				encargos.setFch_encargo_enviado(rs.getDate("fch_encargo_enviado"));
 				encargos.setFch_encargo_recibido(rs.getDate("fch_encargo_recibido"));
+				encargos.setEstado(rs.getString("estado"));
 				
 				return encargos;
 				
